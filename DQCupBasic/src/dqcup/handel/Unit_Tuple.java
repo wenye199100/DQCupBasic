@@ -28,6 +28,22 @@ public class Unit_Tuple {
 	
 	public void run() {
 		Regex regex = new Regex(tuples[0][3]);
+		String[] Content = new String[10];
+		int[][] line = new int[10][100];
+		for(int i = 0; i < 15; i++)
+		{
+			boolean same = false;
+			for(int j = 0; j < n; j++)
+			{
+				for(int k = 0; k < Content.length; k++)
+				{
+					if(Content[k].equals(tuples[i][j]) )
+					{
+						line[][] = 
+					}
+				}
+			}
+		}
 	}
 
 	

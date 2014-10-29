@@ -1,6 +1,6 @@
 package dqcup.handel;
 
-import sun.org.mozilla.javascript.internal.xml.XMLLib.Factory;
+
 
 public class Regex {
 
