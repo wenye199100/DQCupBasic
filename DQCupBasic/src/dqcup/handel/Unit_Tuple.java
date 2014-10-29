@@ -27,9 +27,7 @@ public class Unit_Tuple {
 	}
 	
 	public void run() {
-		int c =100;
-		int d = 100;
-		c= c+d;
+		Regex regex = new Regex(tuples[0][3]);
 	}
 
 	

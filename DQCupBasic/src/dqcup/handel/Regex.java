@@ -1,109 +1,170 @@
 package dqcup.handel;
 
+import sun.org.mozilla.javascript.internal.xml.XMLLib.Factory;
+
 public class Regex {
 
 	private String regex;
+	private boolean STADD_FLAG = false;
 	
-	public Regex()
+	
+	public Regex(String string)
 	{
-		
+		STADD_FLAG = STADD(string);
 	}
 	
-	public boolean SSN()
+	private boolean SSN(String string)
 	{
 		regex = "[0-9]{9}";
-		return true;
+		if(string.matches(regex))
+			return true;
+		return false;
 	}
 	
-	public boolean FNAME()
+	private boolean FNAME(String string)
 	{
 		regex = "[A-Z][a-zA-Z ,.]*";
-		return true;
+		if(string.matches(regex))
+			return true;
+		return false;
 	}
 	
-	public boolean MINIT()
+	private boolean MINIT(String string)
 	{
 		regex = "[A-Z]?";
-		return true;
+		if(string.matches(regex))
+			return true;
+		return false;
 	}
 	
-	public boolean LNAME()
+	private boolean LNAME(String string)
 	{
 		regex = "[A-Z][a-zA-Z ,.]*";
-		return true;
+		if(string.matches(regex))
+			return true;
+		return false;
 	}
 	
-	public boolean STNUM()
+	private boolean STNUM(String string)
 	{
-		if()
+		if(STADD_FLAG && string == null)
 		{
-			
+			return true;
 		}
 		else
 		{
-			regex = "[0-9]{1,4}";	
+			regex = "[0-9]{1,4}";
+			if(string.matches(regex))
+				return true;
+			return false;
 		}
-		return true;
+		
 	}
 	
-	public boolean STADD()
+	private boolean STADD(String string)
 	{
 		regex = "PO Box [0-9]{1,4}|[a-zA-Z ,.]+";
-		return true;
+		if(string.matches(regex))
+			return true;
+		return false;
 	}
 	
-	public boolean APMT()
+	private boolean APMT(String string)
 	{
-		if()
+		if(STADD_FLAG && string == null)
 		{
-			
+			return true;
 		}
 		else
 		{
 			regex = "\\d[a-z]\\d";	
+			if(string.matches(regex))
+				return true;
+			return false;
 		}
-		return true;
+		
 	}
 	
-	public boolean CITY()
+	private boolean CITY(String string)
 	{
 		regex = "[a-z'-/]+";
-		return true;
+		if(string.matches(regex))
+			return true;
+		return false;
 	}
 	
-	public boolean STATE()
+	private boolean STATE(String string)
 	{
 		
 		return true;
 	}
 	
-	public boolean ZIP()
+	private boolean ZIP(String string)
 	{
 		regex = "\\d{5}";
-		return true;
+		if(string.matches(regex))
+			return true;
+		return false;
 	}
 	
-	public boolean BIRTH()
+	private boolean BIRTH(String string)
 	{
 		regex = "";
 		return true;
 	}
 	
-	public boolean AGE()
+	private boolean AGE(String string)
 	{
 		
 		return true;
 	}
 	
-	public boolean SALAY()
+	private boolean SALAY(String string)
 	{
 		
 		return true;
 	}
 	
-	public boolean TAX()
+	private boolean TAX(String string)
 	{
 		
 		return true;
 	}
+	
+	public boolean select_regex(int i, String string)
+	{
+		boolean fact = false;
+		if(i == 2)
+			fact = SSN(string);
+		if(i == 3)
+			fact = FNAME(string);
+		if(i == 4)
+			fact = MINIT(string);
+		if(i == 5)
+			fact = STNUM(string);
+		if(i == 6)
+			fact = LNAME(string);
+		if(i == 7)
+			fact = STADD(string);
+		if(i == 8)
+			fact = APMT(string);
+		if(i == 9)
+			fact = CITY(string);
+		if(i == 10)
+			fact = STATE(string);
+		if(i == 11)
+			fact = ZIP(string);
+		if(i == 12)
+			fact = BIRTH(string);
+		if(i == 13)
+			fact = AGE(string);
+		if(i == 14)
+			fact = SALAY(string);
+		if(i == 15)
+			fact = TAX(string);
+		
+		return fact;
+		
+	}
+	
 }
