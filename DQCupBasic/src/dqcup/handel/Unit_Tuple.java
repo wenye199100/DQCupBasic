@@ -34,7 +34,7 @@ public class Unit_Tuple {
 		if(this.CUID == null)
 			return;
 		
-		Regex regex = new Regex(tuples[0][3]);
+		
 	
 		String[] Content = new String[10];
 		int Content_Num = 0;
@@ -43,6 +43,7 @@ public class Unit_Tuple {
 		int[] line_num = new int[10];
 		for(int i = 2; i < 16; i++)
 		{
+			Regex regex = null;
 			Content = new String[10];
 			Content_Num = 0;
 
@@ -54,6 +55,7 @@ public class Unit_Tuple {
 			boolean same = false;
 			for(int j = 0; j < n; j++)
 			{
+				
 				for(int k = 0; k < Content_Num; k++)
 				{
 					same = false;
@@ -72,9 +74,32 @@ public class Unit_Tuple {
 					line_num[Content_Num++] = 1;
 				}
 			}
-			int a = 1;
-			int b = 2;
-			a = a+b;
+			//
+			if(Content_Num == 1)
+			{
+				regex = new Regex(tuples[line[0][0]][7]);
+				if(regex.select_regex(i, Content[0]))
+				{
+					
+				}
+			}
+			else 
+			{
+				for(int k = 0; k < Content_Num; k++)
+				{
+					regex = new Regex(tuples[line[k][0]][7]);
+					if(regex.select_regex(i, Content[k]))
+					{
+						
+					}
+				}
+			}
+			
+			
+			
+			
+			
+			
 		}
 		
 		
