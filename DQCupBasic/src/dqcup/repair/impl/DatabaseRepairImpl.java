@@ -28,7 +28,8 @@ public class DatabaseRepairImpl implements DatabaseRepair {
 			//System.out.println("SSN: "+tuple.getValue(1)+" ZIP: "+tuple.getValue("ZIP"));
 			if(!tuple.getValue(1).equals(unit.get_CUID()))
 			{
-				unit.run();
+				if(unit.run() != null)
+					result.addAll(unit.run());
 				unit = new Unit_Tuple(tuple);
 			}
 			else 
