@@ -10,7 +10,7 @@ public class Unit_Tuple {
 	private String CUID;
 	private String[][] tuples = new String[100][16];
 	private int n = 0;
-	private Set<RepairedCell> set = new HashSet(); 
+	private Set<RepairedCell> set = new HashSet();
 	private String[] columnId = {"RUID","CUID","SSN","FNAME","MINIT","LNAME","STNUM","STADD","APMT","CITY","STATE","ZIP","BIRTH","AGE","SALARY","TAX"};
 	
 	public Unit_Tuple()
@@ -119,11 +119,7 @@ public class Unit_Tuple {
 						set.add(repairedCell);
 					}
 				}
-//				regex = new Regex(tuples[line[0][0]][7]);
-//				if(regex.select_regex(i, Content[0]))
-//				{
-//					
-//				}
+
 			}
 			
 			
