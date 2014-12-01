@@ -1,13 +1,12 @@
 package dqcup.handel;
 
 
-
-
 public class Regex {
 
 	private String regex;
 	private String regex1;
-	private boolean STADD_FLAG = false;
+	public boolean STADD_FLAG = false;
+	public boolean SALARY_FLAG = false;
 	
 	public Regex()
 	{
@@ -16,7 +15,7 @@ public class Regex {
 	
 	public Regex(String string)
 	{
-		STADD_FLAG = STADD(string);
+		STADD(string);
 	}
 	
 	public boolean SSN(String string)
@@ -66,12 +65,25 @@ public class Regex {
 		}
 		
 	}
+	public boolean STNUM_2(String string)
+	{
+		
+			regex = "[0-9]{1,4}";
+			if(string.matches(regex))
+				return true;
+			return false;
+	}
+		
 	
 	public boolean STADD(String string)
 	{
 		regex = "PO Box [0-9]{1,4}|[a-zA-Z ,.]+";
 		if(string.matches(regex))
+		{
+			if(string.contains("PO Box"))
+				STADD_FLAG = true;
 			return true;
+		}
 		return false;
 	}
 	
@@ -90,10 +102,20 @@ public class Regex {
 		}
 		
 	}
+	public boolean APMT_2(String string)
+	{
+		
+		regex = "\\d[a-z]\\d";
+		if (string.matches(regex))
+			return true;
+		return false;
+		
+		
+	}
 	
 	public boolean CITY(String string)
 	{
-		regex = "[a-z'-/]+";
+		regex = "[a-zA-Z'-/ ]+";
 		if(string.matches(regex))
 			return true;
 		return false;
@@ -157,21 +179,31 @@ public class Regex {
 	
 	public boolean AGE(String string)
 	{
-		
-		return true;
+		// 24-83岁 24-29 30-39...70-79 80-83
+		regex = "(2[4-9])|([3-7][0-9])|(8[0-3])";
+		if (string.matches(regex))
+			return true;
+		return false;
 	}
 	
-	public boolean SALAY(String string)
+	public boolean SALARY(String string)
 	{
-		int salary = Integer.parseInt(string);
-		if (salary >= 500 && salary <=20500)
+		//500-999  1000-9999  10000-19999  20000-20499  20500
+		regex = "([5-9][0-9][0-9])|([1-9][0-9][0-9][0-9])|(1[0-9][0-9][0-9][0-9])|(20[0-4][0-9][0-9])|20500";
+		if (string.matches(regex)) {
+			if (Integer.parseInt(regex) <= 1500)
+				SALARY_FLAG = true;
+			// <1500
 			return true;
+		}
+
 		return false;
 	}
 	
 	public boolean TAX(String string)
 	{
-		
+		if(SALARY_FLAG && Integer.parseInt(string)!=0)
+			return false;	
 		return true;
 	}
 	
@@ -203,7 +235,7 @@ public class Regex {
 		if(i == 14)
 			fact = AGE(string);
 		if(i == 15)
-			fact = SALAY(string);
+			fact = SALARY(string);
 		if(i == 16)
 			fact = TAX(string);
 		
@@ -212,4 +244,3 @@ public class Regex {
 	}
 	
 }
-
