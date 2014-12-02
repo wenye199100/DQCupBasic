@@ -60,7 +60,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.SSN(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -214,7 +214,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.MINIT(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -291,7 +291,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.LNAME(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -599,7 +599,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.CITY(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -676,7 +676,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.STATE(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -753,7 +753,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.ZIP(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -830,7 +830,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.BIRTH(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -907,7 +907,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.AGE(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -984,7 +984,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.SALARY(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}
@@ -1061,7 +1061,7 @@ public class Datafix {
 		
 		for(int i = 0; i < word.Cnt.size(); i++)
 		{
-			truth[i] = regex.FNAME(word.Cnt.get(i));
+			truth[i] = regex.TAX(word.Cnt.get(i));
 			if(truth[i])
 				exist_one = true;
 		}

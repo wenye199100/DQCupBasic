@@ -123,7 +123,7 @@ public class Regex {
 	
 	public boolean STATE(String string)
 	{
-		regex="^(A[LKZR])|(C[AOT])|(DE)|(FL)|(GA)|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EDAINSOT])|(N[EVHJMYCD])|(O[HKR])|(PA)|(RL)|(S[CD])|(T[NX])|([UV]T)|(VA)|(W[AVYI])$";
+		regex="^(A[LKZR])|(C[AOT])|(DE)|(FL)|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EDAINSOT])|(N[EVHJMYCD])|(O[HKR])|(P[AR])|(RL)|(S[CD])|(T[NX])|([UV]T)|(VA)|(W[AVYI])$";
 		if(string.matches(regex))
 			return true;
 		return false;
@@ -139,12 +139,20 @@ public class Regex {
 	
 	public boolean BIRTH(String string)
 	{
-		regex = "^(1|3|5|7|8|10|12)\\-(([012][1-9])|(3[01]))\\-(19[3-8][0-9]$)";
-		regex1 = "^(4|6|8|9|11)\\-(([012][1-9])|(30))\\-(19[3-8][0-9]$)";
+		regex = "^(1|3|5|7|8|10|12)\\-(([0-9])|(1[0-9])|(2[0-9])|(3[01]))\\-(19[3-8][0-9]$)";
+		regex1 = "^(4|6|8|9|11)\\-(([0-9])|(1[0-9])|(2[0-9])|(30))\\-(19[3-8][0-9]$)";
+		
 		if(string.matches(regex)||string.matches(regex1)) return true;
 		else
 		{
 			String[] dataArray = string.split("-");
+			try {
+				Integer.valueOf(dataArray[0]);
+				Integer.valueOf(dataArray[1]);
+				Integer.valueOf(dataArray[2]);
+			} catch (Exception e) {
+				return false;
+			}
 	        int year,month,day;
 	        month = Integer.parseInt(dataArray[0]);
 	        day = Integer.parseInt(dataArray[1]);
@@ -189,9 +197,14 @@ public class Regex {
 	public boolean SALARY(String string)
 	{
 		//500-999  1000-9999  10000-19999  20000-20499  20500
+		try {
+			Integer.valueOf(string);
+		} catch (Exception e) {
+			return false;
+		}
 		regex = "([5-9][0-9][0-9])|([1-9][0-9][0-9][0-9])|(1[0-9][0-9][0-9][0-9])|(20[0-4][0-9][0-9])|20500";
 		if (string.matches(regex)) {
-			if (Integer.parseInt(regex) <= 1500)
+			if (Integer.parseInt(string) <= 1500)
 				SALARY_FLAG = true;
 			// <1500
 			return true;
