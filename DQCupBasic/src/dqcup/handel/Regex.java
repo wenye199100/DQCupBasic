@@ -28,7 +28,7 @@ public class Regex {
 	
 	public boolean FNAME(String string)
 	{
-		regex = "[A-Z][a-zA-Z ,.]*";
+		regex = "[A-Z][a-z ,.]*";
 		if(string.matches(regex))
 			return true;
 		return false;
@@ -44,7 +44,7 @@ public class Regex {
 	
 	public boolean LNAME(String string)
 	{
-		regex = "[A-Z][a-zA-Z ,.]*";
+		regex = "[A-Z][a-z ,.]*";
 		if(string.matches(regex))
 			return true;
 		return false;
@@ -123,7 +123,7 @@ public class Regex {
 	
 	public boolean STATE(String string)
 	{
-		regex="^(A[LKZR])|(C[AOT])|(DE)|(FL)|(G[AU])|(HI)|(I[DLNA])|(K[SY])|(LA)|(M[EDAINSOT])|(N[EVHJMYCD])|(O[HKR])|(P[AR])|(RL)|(S[CD])|(T[NX])|([UV]T)|(VA)|(W[AVYI])$";
+		regex="^(RI|VT|HI|VI|ME|VA|MI|DE|ID|IA|MD|MA|AR|UT|IL|IN|MN|AZ|MO|MT|MS|NH|NJ|PR|NM|AK|AL|NC|ND|NE|GA|NV|TN|OK|OH|WY|FM|FL|SD|SC|CT|WV|KY|KS|OR|LA|GU|WA|CO|PA)$";
 		if(string.matches(regex))
 			return true;
 		return false;

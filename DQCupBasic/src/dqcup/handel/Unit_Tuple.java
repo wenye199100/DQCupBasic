@@ -67,26 +67,69 @@ public class Unit_Tuple {
 	
 	
 	public Set<RepairedCell> run2() {
-		
-		
-		//先处理STADD
-		
-		fix(7);
-		
+		WRITE ww = new WRITE();
+		//处理SSN，SSN=000000000， 工资和税都是0
+		//2 SSN
 		for(int i = 0; i < n; i++)
 		{
-			if(Integer.parseInt(tuples[i][0]) == 14646)
+			if(Integer.parseInt(tuples[i][0]) == 3)
 			{
 				int xxxx = 1;
 				System.out.println(xxxx);
 			}
 		}
 		
+		
+		
+		fix(2);
+		if(t_tuple[2].equals("000000000"))
+		{
+			for (int i = 0; i < n; i++) 
+			{
+				if(!tuples[i][14].equals("0"))
+				{
+					RepairedCell repairedCell = new RepairedCell(
+							Integer.parseInt(tuples[i][0]), columnId[14], "0");
+					set.add(repairedCell);
+					ww.method2(tuples[i][0], columnId[14], "0");
+				}
+				if(!tuples[i][15].equals("0"))
+				{
+					RepairedCell repairedCell = new RepairedCell(
+							Integer.parseInt(tuples[i][0]), columnId[15], "0");
+					set.add(repairedCell);
+					ww.method2(tuples[i][0], columnId[15], "0");
+				}
+			}
+		}
+		else 
+		{
+			//14 SALARY
+			fix(14);
+			
+			//15 TAX
+			fix(15);
+		}
+		
+		
+		//先处理STADD
+		
+		fix(7);
+		
+//		for(int i = 0; i < n; i++)
+//		{
+//			if(Integer.parseInt(tuples[i][0]) == 14646)
+//			{
+//				int xxxx = 1;
+//				System.out.println(xxxx);
+//			}
+//		}
+		
 		Regex regex_7 = new Regex();
 		boolean PO_flag = false;
 		regex_7.STADD(t_tuple[7]);
 		PO_flag = regex_7.STADD_FLAG;
-		WRITE ww = new WRITE();
+		
 		
 		// 判断STNUM，STADD和APMT,分别是tuple[][6,7,8]
 		if(PO_flag)
@@ -117,8 +160,7 @@ public class Unit_Tuple {
 			fix(8);
 		}
 		
-		//2 SSN
-		fix(2);
+		
 		
 		//3 FNAME
 		fix(3);
@@ -144,11 +186,7 @@ public class Unit_Tuple {
 		//13 AGE
 		fix(13);
 		
-		//14 SALARY
-		fix(14);
 		
-		//15 TAX
-		fix(15);
 		
 		
 
