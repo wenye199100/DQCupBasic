@@ -52,5 +52,26 @@ BufferedWriter out = null;
         }   
     }  
 	
+public void method3(String w1, String w2, String w3, String w4, String w5) {   
+		
+		String conent = w1 + "," + w2 + "," + w3 + "," + w4 + "," + w5 +'\n';
+		String file = "input/test.txt";
+        BufferedWriter out = null;   
+        try {   
+            out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true)));   
+            out.write(conent);   
+        } catch (Exception e) {   
+            e.printStackTrace();   
+        } finally {   
+            try {   
+            	if(out != null){
+            		out.close();   
+                }
+            } catch (IOException e) {   
+                e.printStackTrace();   
+            }   
+        }   
+    }  
+	
 	
 }

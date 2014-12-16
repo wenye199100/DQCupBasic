@@ -112,7 +112,7 @@ public class Datafix {
 				{
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 					set.add(repairedCell);
 				}
 			}
@@ -190,7 +190,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -267,7 +267,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -344,7 +344,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -421,7 +421,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -498,7 +498,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -575,7 +575,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -652,7 +652,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -729,7 +729,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -806,7 +806,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -883,7 +883,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -960,7 +960,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -1037,7 +1037,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}
@@ -1114,7 +1114,7 @@ public class Datafix {
 					RepairedCell repairedCell = new RepairedCell(
 							word.Mark.get(i).get(j), columnId[Column], truthString);
 					set.add(repairedCell);
-					w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
+					//w.method2(word.Mark.get(i).get(j).toString(), columnId[Column], truthString);
 				}
 			}
 		}

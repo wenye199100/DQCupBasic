@@ -8,6 +8,7 @@ import java.util.Set;
 import dqcup.exam.Find;
 import dqcup.exam.Fix;
 import dqcup.handel.Unit_Tuple;
+import dqcup.handel.WRITE;
 import dqcup.repair.DatabaseRepair;
 import dqcup.repair.DbFileReader;
 import dqcup.repair.RepairedCell;
@@ -41,7 +42,15 @@ public class DatabaseRepairImpl implements DatabaseRepair {
 		//result.add(new RepairedCell(2, "ZIP", "97420"));
 		//result.add(new RepairedCell(6, "ZIP", "88114"));
 		
+		WRITE write = new WRITE();
 		//����result����
+//		for(RepairedCell cell:result)
+//		{
+//			int a = cell.getRowId();
+//			String string = String.valueOf(a);
+//			write.method2(string, cell.getColumnId(), cell.getValue());
+//			
+//		}
 		return result;
 	}
 

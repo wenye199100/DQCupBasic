@@ -91,14 +91,14 @@ public class Unit_Tuple {
 					RepairedCell repairedCell = new RepairedCell(
 							Integer.parseInt(tuples[i][0]), columnId[14], "0");
 					set.add(repairedCell);
-					ww.method2(tuples[i][0], columnId[14], "0");
+					//ww.method2(tuples[i][0], columnId[14], "0");
 				}
 				if(!tuples[i][15].equals("0"))
 				{
 					RepairedCell repairedCell = new RepairedCell(
 							Integer.parseInt(tuples[i][0]), columnId[15], "0");
 					set.add(repairedCell);
-					ww.method2(tuples[i][0], columnId[15], "0");
+					//ww.method2(tuples[i][0], columnId[15], "0");
 				}
 			}
 		}
@@ -141,14 +141,14 @@ public class Unit_Tuple {
 					RepairedCell repairedCell = new RepairedCell(
 							Integer.parseInt(tuples[i][0]), columnId[6], null);
 					set.add(repairedCell);
-					ww.method2(tuples[i][0], columnId[6], null);
+					//ww.method2(tuples[i][0], columnId[6], null);
 				}
 				if(!tuples[i][8].equals(""))
 				{
 					RepairedCell repairedCell = new RepairedCell(
 							Integer.parseInt(tuples[i][0]), columnId[8], null);
 					set.add(repairedCell);
-					ww.method2(tuples[i][0], columnId[6], null);
+					//ww.method2(tuples[i][0], columnId[6], null);
 				}
 			}
 		}
@@ -189,7 +189,9 @@ public class Unit_Tuple {
 		
 		
 		
-
+		WRITE write = new WRITE();
+		write.method3(t_tuple[1], t_tuple[2],t_tuple[10], t_tuple[14], t_tuple[15]);
+		
 		return set;
 	}
 
