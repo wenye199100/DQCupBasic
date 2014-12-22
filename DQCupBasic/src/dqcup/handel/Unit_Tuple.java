@@ -13,17 +13,18 @@ import dqcup.repair.RepairedCell;
 import dqcup.repair.Tuple;
 
 public class Unit_Tuple {
-	private String CUID;
-	// private Vector<String[]> _tuples = new Vector<String[]>();
+	public String CUID;
+	public Vector<String[]> tuples_Vector = new Vector<String[]>();
 
 	private String[][] tuples = new String[100][16];
-	private String[] t_tuple = new String[16];
+	private String[] temp_tuple = new String[16];
+	public String[] t_tuple = new String[16];
 	private int n = 0;
 	private Set<RepairedCell> set = new HashSet();
 	private String[] columnId = { "RUID", "CUID", "SSN", "FNAME", "MINIT",
 			"LNAME", "STNUM", "STADD", "APMT", "CITY", "STATE", "ZIP", "BIRTH",
 			"AGE", "SALARY", "TAX" };
-
+	public boolean ssn_flag = false;
 	public Unit_Tuple() {
 
 	}
@@ -34,13 +35,13 @@ public class Unit_Tuple {
 		// tuples[][1] cuid
 
 		CUID = tuple.getValue(1);
-		// String[] _tuple = new String[16];
+		temp_tuple = new String[16];
 		for (int i = 0; i < 16; i++) {
 			tuples[0][i] = tuple.getValue(i);
-			// _tuple[i] = tuple.getValue(i);
+			temp_tuple[i] = tuple.getValue(i);
 		}
 
-		// _tuples.add(_tuple);
+		tuples_Vector.add(temp_tuple);
 		n++;
 		
 		t_tuple[1] = tuples[0][1];
@@ -48,11 +49,12 @@ public class Unit_Tuple {
 
 	public void add(Tuple tuple) {
 		// String[] _tuple = new String[16];
+		temp_tuple = new String[16];
 		for (int i = 0; i < 16; i++) {
 			tuples[n][i] = tuple.getValue(i);
-			// _tuple[i] = tuple.getValue(i);
+			temp_tuple[i] = tuple.getValue(i);
 		}
-		// _tuples.add(_tuple);
+		tuples_Vector.add(temp_tuple);
 		n++;
 	}
 
@@ -67,38 +69,60 @@ public class Unit_Tuple {
 	
 	
 	public Set<RepairedCell> run2() {
-		WRITE ww = new WRITE();
+		//WRITE ww = new WRITE();
 		//处理SSN，SSN=000000000， 工资和税都是0
 		//2 SSN
-		for(int i = 0; i < n; i++)
+//		for(int i = 0; i < n; i++)
+//		{
+//			if(Integer.parseInt(tuples[i][0]) == 20)
+//			{
+//				int xxxx = 1;
+//				System.out.println(xxxx);
+//			}
+//		}
+		
+		
+		Unit_Word content = new Unit_Word();
+		for (int i = 0; i < n; i++) 
+			content.add_Content(tuples_Vector.get(i)[2], Integer.parseInt(tuples_Vector.get(i)[0]));
+		Regex regex = new Regex();
+		//truth 表示符合正则
+		boolean exist_one = regex.SSN(content.Cnt.get(0));
+		if(content.Cnt.size() == 1 && exist_one)
 		{
-			if(Integer.parseInt(tuples[i][0]) == 3)
-			{
-				int xxxx = 1;
-				System.out.println(xxxx);
-			}
+			ssn_flag = true;
+			t_tuple[2] = content.Cnt.get(0);
 		}
-		
-		
-		
-		fix(2);
-		if(t_tuple[2].equals("000000000"))
+		//fix(2);
+		//System.out.println(tuples_Vector.get(n-1)[0]);
+		if(ssn_flag == true && t_tuple[2].equals("000000000") )
 		{
 			for (int i = 0; i < n; i++) 
 			{
-				if(!tuples[i][14].equals("0"))
+//				if(!tuples[i][14].equals("0"))
+//				{
+//					RepairedCell repairedCell = new RepairedCell(
+//							Integer.parseInt(tuples[i][0]), columnId[14], "0");
+//					set.add(repairedCell);
+//				}
+//				if(!tuples[i][15].equals("0"))
+//				{
+//					RepairedCell repairedCell = new RepairedCell(
+//							Integer.parseInt(tuples[i][0]), columnId[15], "0");
+//					set.add(repairedCell);
+//				}
+				
+				if(!tuples_Vector.get(i)[14].equals("0"))
 				{
 					RepairedCell repairedCell = new RepairedCell(
-							Integer.parseInt(tuples[i][0]), columnId[14], "0");
+							Integer.parseInt(tuples_Vector.get(i)[0]), columnId[14], "0");
 					set.add(repairedCell);
-					//ww.method2(tuples[i][0], columnId[14], "0");
 				}
-				if(!tuples[i][15].equals("0"))
+				if(!tuples_Vector.get(i)[15].equals("0"))
 				{
 					RepairedCell repairedCell = new RepairedCell(
-							Integer.parseInt(tuples[i][0]), columnId[15], "0");
+							Integer.parseInt(tuples_Vector.get(i)[0]), columnId[15], "0");
 					set.add(repairedCell);
-					//ww.method2(tuples[i][0], columnId[15], "0");
 				}
 			}
 		}
@@ -109,6 +133,34 @@ public class Unit_Tuple {
 			
 			//15 TAX
 			fix(15);
+			if(t_tuple[14].equals("0"))
+			{
+				t_tuple[2] = "000000000";
+				for(int i = 0; i < n; i++)
+				{
+					if(!tuples_Vector.get(i)[2].equals("000000000"))
+					{
+						RepairedCell repairedCell = new RepairedCell(
+								Integer.parseInt(tuples_Vector.get(i)[0]), columnId[2], "000000000");
+						set.add(repairedCell);
+					}
+				}
+			}
+			else 
+			{
+				Unit_Word c = new Unit_Word();
+				for (int i = 0; i < n; i++) 
+				{
+					if(tuples_Vector.get(i)[2].equals("000000000"))
+						c.add_Content("aaaaaaaaa", Integer.parseInt(tuples_Vector.get(i)[0]));
+					else
+						c.add_Content(tuples_Vector.get(i)[2], Integer.parseInt(tuples_Vector.get(i)[0]));
+				}
+				Datafix datafix = new Datafix(c);
+				set.addAll(datafix.select(2));
+				t_tuple[2] = datafix.truthString;
+				
+			}
 		}
 		
 		
@@ -136,19 +188,32 @@ public class Unit_Tuple {
 		{
 			for (int i = 0; i < n; i++) 
 			{
-				if(!tuples[i][6].equals(""))
+//				if(!tuples[i][6].equals(""))
+//				{
+//					RepairedCell repairedCell = new RepairedCell(
+//							Integer.parseInt(tuples[i][0]), columnId[6], null);
+//					set.add(repairedCell);
+//					//ww.method2(tuples[i][0], columnId[6], null);
+//				}
+//				if(!tuples[i][8].equals(""))
+//				{
+//					RepairedCell repairedCell = new RepairedCell(
+//							Integer.parseInt(tuples[i][0]), columnId[8], null);
+//					set.add(repairedCell);
+//					//ww.method2(tuples[i][0], columnId[6], null);
+//				}
+				
+				if(!tuples_Vector.get(i)[6].equals(""))
 				{
 					RepairedCell repairedCell = new RepairedCell(
-							Integer.parseInt(tuples[i][0]), columnId[6], null);
+							Integer.parseInt(tuples_Vector.get(i)[0]), columnId[6], null);
 					set.add(repairedCell);
-					//ww.method2(tuples[i][0], columnId[6], null);
 				}
-				if(!tuples[i][8].equals(""))
+				if(!tuples_Vector.get(i)[8].equals(""))
 				{
 					RepairedCell repairedCell = new RepairedCell(
-							Integer.parseInt(tuples[i][0]), columnId[8], null);
+							Integer.parseInt(tuples_Vector.get(i)[0]), columnId[8], null);
 					set.add(repairedCell);
-					//ww.method2(tuples[i][0], columnId[6], null);
 				}
 			}
 		}
@@ -189,8 +254,8 @@ public class Unit_Tuple {
 		
 		
 		
-		WRITE write = new WRITE();
-		write.method3(t_tuple[1], t_tuple[2],t_tuple[10], t_tuple[14], t_tuple[15]);
+//		WRITE write = new WRITE();
+//		write.method3(t_tuple[1], t_tuple[2],t_tuple[10], t_tuple[14], t_tuple[15]);
 		
 		return set;
 	}
@@ -199,12 +264,12 @@ public class Unit_Tuple {
 	{
 		Unit_Word content = new Unit_Word();
 		for (int i = 0; i < n; i++) 
-			content.add_Content(tuples[i][x], Integer.parseInt(tuples[i][0]));
+			content.add_Content(tuples_Vector.get(i)[x], Integer.parseInt(tuples_Vector.get(i)[0]));
 		Datafix datafix = new Datafix(content);
 		set.addAll(datafix.select(x));
 		t_tuple[x] = datafix.truthString;
 	}
-	
+
 	
 
 	public String get_CUID() {

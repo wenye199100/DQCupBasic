@@ -160,9 +160,9 @@ public class Regex {
 	        if(month == 2)
 	        {
 	        	if(( year%4 == 0 && year%100 != 0 || year%400 == 0) )  
-    			{if(day < 29 )return true;  }      		
+    			{if(day <= 29 )return true;  }      		
 	        	else
-    			{if(day < 28 )return true;  }        
+    			{if(day <= 28 )return true;  }        
 	        }     
 	        return false;
 		}
@@ -202,7 +202,7 @@ public class Regex {
 		} catch (Exception e) {
 			return false;
 		}
-		regex = "([5-9][0-9][0-9])|([1-9][0-9][0-9][0-9])|(1[0-9][0-9][0-9][0-9])|(20[0-4][0-9][0-9])|20500";
+		regex = "(0|[5-9][0-9][0-9])|([1-9][0-9][0-9][0-9])|(1[0-9][0-9][0-9][0-9])|(20[0-4][0-9][0-9])|20500";
 		if (string.matches(regex)) {
 			if (Integer.parseInt(string) <= 1500)
 				SALARY_FLAG = true;
@@ -215,6 +215,11 @@ public class Regex {
 	
 	public boolean TAX(String string)
 	{
+		try {
+			Integer.valueOf(string);
+		} catch (Exception e) {
+			return false;
+		}
 		if(SALARY_FLAG && Integer.parseInt(string)!=0)
 			return false;	
 		return true;

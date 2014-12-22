@@ -22,7 +22,7 @@ public class Test {
 		truth = TestUtil.readTruth("input/Truth-easy.txt");
 		if (truth.size() != 0) {
 			startTime = System.currentTimeMillis();
-			found = dr.repair("input/DB-normal.txt");
+			found = dr.repair("input/DB-easy.txt");
 			endTime = System.currentTimeMillis();
 
 			double findAccuracy = TestUtil.findAccuracy(truth, found);

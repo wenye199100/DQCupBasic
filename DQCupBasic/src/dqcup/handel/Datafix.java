@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 import dqcup.repair.RepairedCell;
 
 public class Datafix {
@@ -43,6 +45,8 @@ public class Datafix {
 	}
 	
 	
+	
+	
 	//2
 	public Set<RepairedCell> fix_SSN()
 	{
@@ -64,12 +68,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+			{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			truthString = new Unit_Bit(word).right_all_num();
 		} 
 		//多个符合正则
 		else 
@@ -141,12 +145,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
 			truthString = word.Cnt.get(0);
-			truthT = 0;
 		} 
 		//多个符合正则
 		else 
@@ -218,12 +222,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
 			truthString = word.Cnt.get(0);
-			truthT = 0;
 		} 
 		//多个符合正则
 		else 
@@ -295,12 +299,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
 			truthString = word.Cnt.get(0);
-			truthT = 0;
 		} 
 		//多个符合正则
 		else 
@@ -372,12 +376,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
 			truthString = word.Cnt.get(0);
-			truthT = 0;
 		} 
 		//多个符合正则
 		else 
@@ -449,12 +453,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			truthString = new Unit_Bit(word).right_all_num();
 		} 
 		//多个符合正则
 		else 
@@ -526,12 +530,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			truthString = new Unit_Bit(word).right_APMT();
 		} 
 		//多个符合正则
 		else 
@@ -603,12 +607,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			truthString = new Unit_Bit(word).right_all_alpha();
 		} 
 		//多个符合正则
 		else 
@@ -659,6 +663,41 @@ public class Datafix {
 		
 		return  set;
 	}
+	
+	
+	private String state(String string)
+	{
+		String[] state = {"RI","VT","HI","VI","ME","VA","MI","DE","ID","IA","MD","MA","AR","UT","IL","IN","MN","AZ","MO","MT","MS","NH","NJ","PR","NM","AK","AL","NC","ND","NE","GA","NV","TN","OK","OH","WY","FM","FL","SD","SC","CT","WV","KY","KS","OR","LA","GU","WA","CO","PA"};
+		String truthString = new String();
+		Character[] ch = new Character[2];
+		ch[0] = string.charAt(0);
+		ch[1] = string.charAt(1);
+		Character[] ch_t = new Character[2];
+		int max = 50;
+		for(int i = 0; i < 50; i++)
+		{
+			Character c = state[i].charAt(0);
+			if(Math.abs(ch[0] - c) < max)
+			{
+				max = Math.abs(ch[0] - c);
+				ch_t[0] = c;
+			}
+		}
+		 max = 50;
+		for(int i = 0; i < 50; i++)
+		{
+			if(state[i].charAt(0) == ch_t[0])
+			{
+				Character c = state[i].charAt(1);
+				if(Math.abs(ch[1] - c) < max)
+				{
+					max = Math.abs(ch[1] - c);
+					truthString = state[i];
+				}
+			}
+		}
+		return truthString;
+	}
 	//10
 	public Set<RepairedCell> fix_STATE()
 	{
@@ -680,12 +719,25 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
-		//如果没有一个有符合正则
-		if(!exist_one) 
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
+		if(word.Cnt.size() == 1 && !exist_one)
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			boolean t = regex.STATE(word.Cnt.get(0).toUpperCase());
+			if(t)
+				truthString = word.Cnt.get(0).toUpperCase();
+			else 
+				truthString = state(word.Cnt.get(0).toUpperCase());
+		}
+		//如果没有一个有符合正则
+		if(word.Cnt.size() > 1 && !exist_one) 
+		{
+			truthString = new Unit_Bit(word).right_state();
+			boolean t = regex.STATE(truthString);
+			if(t)
+				truthString = word.Cnt.get(0).toUpperCase();
+			else 
+				truthString = state(word.Cnt.get(0).toUpperCase());
 		} 
 		//多个符合正则
 		else 
@@ -757,12 +809,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			truthString = new Unit_Bit(word).right_all_num();
 		} 
 		//多个符合正则
 		else 
@@ -834,12 +886,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
 			truthString = word.Cnt.get(0);
-			truthT = 0;
 		} 
 		//多个符合正则
 		else 
@@ -911,12 +963,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			truthString = new Unit_Bit(word).right_all_num();
 		} 
 		//多个符合正则
 		else 
@@ -988,12 +1040,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			truthString = new Unit_Bit(word).right_all_num();
 		} 
 		//多个符合正则
 		else 
@@ -1065,12 +1117,12 @@ public class Datafix {
 			if(truth[i])
 				exist_one = true;
 		}
-		
+		if(word.Cnt.size() == 1 && exist_one)
+		{truthString = word.Cnt.get(0);return set;}
 		//如果没有一个有符合正则
 		if(!exist_one) 
 		{
-			truthString = word.Cnt.get(0);
-			truthT = 0;
+			truthString = new Unit_Bit(word).right_all_num();
 		} 
 		//多个符合正则
 		else 
